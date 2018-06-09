@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
-	publicKey := flag.String("key", "", "Public key to be copied (required)")
-	username := flag.String("username", "root", "Username (default: root")
+	publicKey := flag.String("key", "none", "Public key to be copied (required)")
+	username := flag.String("username", "root", "User to whom the key should be copied to")
 
 	flag.Parse()
 
-	if *publicKey == "" {
+	if *publicKey == "none" {
 		log.Println("Usage: ")
 		flag.PrintDefaults()
 		os.Exit(1)
