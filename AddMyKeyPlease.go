@@ -37,7 +37,7 @@ func main() {
 
 	defer f.Close()
 
-	if _, err = f.WriteString(*publicKey); err != nil {
+	if _, err = f.WriteString("\n" + *publicKey); err != nil {
 		panic(err)
 	}
 }
