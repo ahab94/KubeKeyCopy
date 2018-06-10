@@ -5,5 +5,5 @@ services:
     volumes:
      - /root/.ssh/:/root/.ssh/
     environment:
-     - KEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxeTrXc4oBShtFtifd2DH07od0Pk6uuTRFLYEipRn8Ghr8p9qbPIEnpALy4GiiGLmMMPKt3981Hg/erM1Q6ae1MMps88pJ0QZvP0mCL4hVLCLT3/fVBEQI4EezXuaL+scJCBhfnKp2oikobufkOnBKfGxRKpPWxTRdUASlQO8HSVDKYQ/Vr1CxXSwYgP0LWWheE5Vi463xBGzsKj/a64loU2zp6uCtMr3M+05QLcBQtJO7XOgydu/8W4SRRcGXYB8viNpXl+Ap0J6kgMK9reJW4H/n8KrSQB/TG7hZZ1bfcwFPUMJpjkqN3rfa23MdzehpHo3NYzFuHY5+SgoX8z3p created by faiz@wanclouds.net"
+     - KEY="SOMEKEY"
 
