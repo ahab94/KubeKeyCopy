@@ -3,7 +3,9 @@ services:
   key_job:
     build: .
     volumes:
+     #Change volume mount according to user's ssh directory
      - /root/.ssh/:/root/.ssh/
     environment:
      #Base 64 public key
      - KEY=base64EncodedKey
+     - USERNAME=root
