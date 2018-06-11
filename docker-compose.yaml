@@ -5,5 +5,5 @@ services:
     volumes:
      - /root/.ssh/:/root/.ssh/
     environment:
-     - KEY="SOMEKEY"
-
+     #Base 64 public key
+     - KEY=base64EncodedKey
