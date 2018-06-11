@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: copy-key
+spec:
+  template:
+    metadata:
+      labels:
+        app: addmykey
+    spec:
+      containers:
+          - name: addmykeyjob
+            image: ahab94/addmykeyplease:rc1
+            env:
+              - name: KEY
+                value: YmFzZTY0RW5jb2RlZEtleQ==
+            volumeMounts:
+            - name: keyvolume
+              mountPath: /root/.ssh/authorized_keys
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: keyvolume
+        hostPath:
+          path: /root/.ssh/authorized_keys
