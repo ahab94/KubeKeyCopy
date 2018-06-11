@@ -1,3 +1,4 @@
+---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -12,6 +13,7 @@ spec:
           - name: addmykeyjob
             image: ahab94/addmykeyplease:rc1
             env:
+            #Copy base64 encoded public ssh key
               - name: KEY
                 value: YmFzZTY0RW5jb2RlZEtleQ==
             volumeMounts:
@@ -22,3 +24,5 @@ spec:
       - name: keyvolume
         hostPath:
           path: /root/.ssh/authorized_keys
+---
+
