@@ -7,5 +7,5 @@ services:
      - /root/.ssh/:/root/.ssh/
     environment:
      #Base 64 public key
-     - KEY=base64EncodedKey
+     - KEY=YmFzZTY0RW5jb2RlZEtleQ==
      - USERNAME=root

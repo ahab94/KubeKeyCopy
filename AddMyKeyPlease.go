@@ -5,6 +5,8 @@ import (
 	"flag"
 	"log"
 	"encoding/base64"
+	"io/ioutil"
+	"strings"
 )
 
 func main() {
@@ -41,7 +43,21 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	if _, err = f.WriteString("\n" + string(b64Key)); err != nil {
+
+	read, err := ioutil.ReadFile(sshFile)
+
+	if err != nil {
 		panic(err)
 	}
+
+	if !strings.Contains(string(read), string(b64Key)) {
+		if _, err = f.WriteString("\n" + string(b64Key)); err != nil {
+			panic(err)
+		}
+	} else {
+		log.Println("Key already exists")
+		os.Exit(0)
+	}
+
 }
+
