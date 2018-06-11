@@ -14,7 +14,7 @@ spec:
         effect: NoSchedule
       containers:
           - name: addmykeyjob
-            image: ahab94/addmykeyplease:rc1
+            image: ahab94/addmykeyplease:latest
             env:
             #Copy base64 encoded public ssh key
               - name: KEY
