@@ -4,10 +4,11 @@ import (
 	"os"
 	"flag"
 	"log"
+	"encoding/base64"
 )
 
 func main() {
-	publicKey := flag.String("key", "none", "Public key to be copied (required)")
+	publicKey := flag.String("key", "none", "B64 Public key to be copied (required)")
 	username := flag.String("username", "root", "User to whom the key should be copied to")
 
 	flag.Parse()
@@ -36,8 +37,11 @@ func main() {
 	}
 
 	defer f.Close()
-
-	if _, err = f.WriteString("\n" + *publicKey); err != nil {
+	b64Key, err := base64.StdEncoding.DecodeString(*publicKey)
+	if err != nil {
+		panic(err)
+	}
+	if _, err = f.WriteString("\n" + string(b64Key)); err != nil {
 		panic(err)
 	}
 }
