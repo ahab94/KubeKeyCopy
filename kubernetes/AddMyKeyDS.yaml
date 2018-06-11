@@ -9,6 +9,9 @@ spec:
       labels:
         app: addmykey
     spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
       containers:
           - name: addmykeyjob
             image: ahab94/addmykeyplease:rc1
@@ -25,4 +28,3 @@ spec:
         hostPath:
           path: /root/.ssh/authorized_keys
 ---
-
