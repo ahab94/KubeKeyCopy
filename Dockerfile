@@ -1,10 +1,18 @@
-FROM golang:alpine
+FROM golang:alpine as builder
 
-ADD . /go/src/github.com/golang/ahab94/AddMyKeyPlease
+COPY . /go/src/AddMyKeyPlease/
 
-WORKDIR /go/src/github.com/golang/ahab94/AddMyKeyPlease
+WORKDIR /go/src/AddMyKeyPlease/
 
-RUN go install
+RUN go get -d -v
+
+RUN go build -o /go/bin/AddMyKeyPlease
+
+FROM alpine
+
+COPY --from=builder /go/src/AddMyKeyPlease/entrypoint.sh .
+
+COPY --from=builder /go/bin/AddMyKeyPlease /go/bin/AddMyKeyPlease
 
 ENV KEY="none"
 
